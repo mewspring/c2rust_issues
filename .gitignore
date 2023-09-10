@@ -1,0 +1,4 @@
+compile_commands.json
+out
+# ignore output binary
+issue-wrapping_mul*/issue-wrapping_mul*/issue-wrapping_mul

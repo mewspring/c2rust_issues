@@ -1,0 +1,15 @@
+diff -u -r issue-xxx_v0.18.0/out/src/rnd.rs issue-xxx_v0.18.0+409/out/src/rnd.rs
+--- issue-xxx_v0.18.0/out/src/rnd.rs	2023-09-10 15:13:50.682381536 +0200
++++ issue-xxx_v0.18.0+409/out/src/rnd.rs	2023-09-10 15:11:26.769049377 +0200
+@@ -16,9 +16,8 @@
+ pub unsafe extern "C" fn get_rand_seed() -> int32_t {
+     let INCREMENT: uint32_t = 1 as libc::c_int as uint32_t;
+     let MULTIPLIER: uint32_t = 0x15a4e35 as libc::c_int as uint32_t;
+-    cur_rand_seed = MULTIPLIER
+-        .wrapping_mul(cur_rand_seed as uint32_t)
+-        .wrapping_add(INCREMENT) as int32_t;
++    cur_rand_seed = (MULTIPLIER * cur_rand_seed as uint32_t).wrapping_add(INCREMENT)
++        as int32_t;
+     let mut ret: int32_t = abs(cur_rand_seed);
+     return ret;
+ }
